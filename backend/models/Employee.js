@@ -1,51 +1,52 @@
 const mongoose = require("mongoose");
 
+//Emp DB Connection
 const employeeSchema = new mongoose.Schema(
   {
     employeeId: {
       type: String,
-      unique: true
+      unique: true,
     },
     name: {
       type: String,
       required: [true, "Full name is required"],
-      trim: true
+      trim: true,
     },
     email: {
       type: String,
       required: [true, "Email is required"],
       unique: true,
       trim: true,
-      lowercase: true
+      lowercase: true,
     },
     phone: {
       type: String,
-      required: [true, "Phone number is required"]
+      required: [true, "Phone number is required"],
     },
     department: {
       type: String,
-      required: [true, "Department is required"]
+      required: [true, "Department is required"],
     },
     designation: {
       type: String,
-      required: [true, "Designation is required"]
+      required: [true, "Designation is required"],
     },
     salary: {
       type: Number,
       required: [true, "Salary is required"],
-      min: [1, "Salary must be positive"]
+      min: [1, "Salary must be positive"],
     },
     status: {
       type: String,
       enum: ["Active", "Inactive"],
-      default: "Active"
+      default: "Active",
     },
     joiningDate: {
       type: Date,
-      required: [true, "Joining date is required"]
-    }
+      required: [true, "Joining date is required"],
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 employeeSchema.pre("save", async function (next) {
