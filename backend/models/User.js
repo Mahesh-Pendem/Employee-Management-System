@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//Database connection
 const userSchema = new mongoose.Schema(
   {
     name: {
